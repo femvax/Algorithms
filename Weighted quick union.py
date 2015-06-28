@@ -1,12 +1,10 @@
 class UnionFind:
-
-    def __init__(self, n):
-        self.id = list(range(n))
-        self.sz = [1 for x in range(n)]
-        self.n = n
+    def __init__(self, N):
+        self.id = list(range(N))
+        self.sz = [1 for x in range(N)]
 
     def find(self, p):
-        if p == self.id[p]:
+        if self.id[p] == p:
             return p
         else:
             return self.find(self.id[p])
@@ -14,15 +12,13 @@ class UnionFind:
     def union(self, p, q):
         p_id = self.find(p)
         q_id = self.find(q)
-        if p_id == q_id:
-            return
-        else:
-            if self.sz[p_id] < self.sz[q_id]:
-                self.id[p] = q_id
-                self.sz[q] += 1
+        if p_id != q_id:
+            if self.sz[p_id] <= self.sz[q_id]:
+                self.id[p_id] = q_id
+                self.sz[q_id] += self.sz[p_id]
             else:
-                self.id[q] = p_id
-                self.sz[p] += 1
+                self.id[q_id] = p_id
+                self.sz[p_id] += self.sz[q_id]
 
     def connected(self, p, q):
         return(self.find(p) == self.find(q))

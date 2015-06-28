@@ -13,9 +13,7 @@ class UnionFind:
     def union(self, p, q):
         p_id = self.find(p)
         q_id = self.find(q)
-        if p_id == q_id:
-            return
-        else:
+        if p_id != q_id:
             self.id[p] = q_id
 
     def connected(self, p, q):
