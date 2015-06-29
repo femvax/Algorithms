@@ -1,7 +1,7 @@
 class UnionFind:
     def __init__(self, N):
         self.id = list(range(N))
-        self.sz = [1 for x in range(N)]
+        self.sz = [1] * N
 
     def find(self, p):
         if self.id[p] == p:
