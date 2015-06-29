@@ -12,8 +12,9 @@ def sort(array):
     return list(merge(left,right))
 
 import random
-test = list(range(40))
+test = list(range(20))
 random.shuffle(test)
 print(test)
 print(sort(test))
+
 
