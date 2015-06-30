@@ -27,6 +27,7 @@ class BinaryHeap:
 
     def extract(self):
         ext = self.heap[0]
-        self.heap[0] = self.heap.pop()
+        if len(self.heap) > 1:
+            self.heap[0] = self.heap.pop()
         self.check_down(0)
         return ext
